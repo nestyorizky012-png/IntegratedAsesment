@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "296200100040",
+    "project_id": "integratedasesment",
+    "storage_bucket": "integratedasesment.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296200100040:android:3da84ca1b4fe4043c6adfd",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcAdBvRHO9Z5xvcckfydqSQ24kADBQ33M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
