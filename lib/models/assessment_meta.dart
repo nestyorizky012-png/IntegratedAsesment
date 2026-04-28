@@ -4,6 +4,8 @@ class AssessmentMeta {
   final String subject;
   final int totalQuestions;
   final int durationMinutes;
+  final String? creatorName;
+  final String? imageUrl;
 
   AssessmentMeta({
     required this.id,
@@ -11,5 +13,7 @@ class AssessmentMeta {
     required this.subject,
     required this.totalQuestions,
     required this.durationMinutes,
+    this.creatorName,
+    this.imageUrl,
   });
 }

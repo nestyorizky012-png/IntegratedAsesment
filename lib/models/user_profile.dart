@@ -4,6 +4,7 @@ class UserProfile {
   String? name;
   String? kelas;
   String? sekolah;
+  String? avatarUrl;
 
   UserProfile({
     required this.uid,
@@ -11,6 +12,7 @@ class UserProfile {
     this.name,
     this.kelas,
     this.sekolah,
+    this.avatarUrl,
   });
 
   bool get isComplete => 

@@ -28,21 +28,36 @@ class AuthGate extends StatelessWidget {
             return const LoginScreen();
           }
 
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            context.read<UserProfileProvider>().setFromAuth(
-              uid: user.uid,
-              email: user.email ?? '-',
+          final provider = context.watch<UserProfileProvider>();
+          
+          if (provider.profile == null || provider.profile!.uid != user.uid) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.read<UserProfileProvider>().setFromAuth(
+                uid: user.uid,
+                email: user.email ?? '-',
+              );
+            });
+            return Scaffold(
+              backgroundColor: Colors.deepPurple.shade900,
+              body: const Center(child: CircularProgressIndicator(color: Colors.white)),
             );
-          });
+          }
 
-          final profile = context.watch<UserProfileProvider>().profile;
+          if (provider.isLoading) {
+            return Scaffold(
+              backgroundColor: Colors.deepPurple.shade900,
+              body: const Center(child: CircularProgressIndicator(color: Colors.white)),
+            );
+          }
 
-// kalau profil belum ada/ belum lengkap → arahkan ke profil
-          if (profile == null || !profile.isComplete) {
+          final profile = provider.profile!;
+
+          // kalau profil belum ada/ belum lengkap → arahkan ke profil
+          if (!profile.isComplete) {
             return const ProfileScreen();
           }
-        // sudah login
-        return const DashboardScreen();
+          // sudah login dan profil lengkap
+          return const DashboardScreen();
       },
     );
   }
